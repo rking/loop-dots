@@ -1,5 +1,9 @@
-# See notes in .zshenv for the full sequence
-source $DOTDOTDOT_ROOT/lib/scripting
+[[ -z $already_looped_zshrcs ]] || return
+already_looped_zshrcs=1
+
+...filestart .zshrc
 ...sourcedircontents ~/.sh # Common with bash
-...quieteach ...sourceif .zshrc
+fpath+=(~/.zsh/func); autoload -U ~/.zsh/func/*(:t)
+...eachsource .zshrc
 ...sourcedircontents ~/.zsh/rc
+...fileend .zshrc

@@ -1,28 +1,25 @@
-etcet-dots
-==========
+loop-dots
+=========
 
 A looping set of scripts to allow many
 [`...`](http://github.com/ingydotnet/....git) repos to play along nicely.
 
 This should go high up in the `~/.../conf`, so that its dot-files take
 precedence over the other repos (but, don't worry - the others will still get
-sourced. In fact, that's the whole point of etcet-dots!)
+sourced. In fact, that's the whole point of loop-dots!)
 
-By convention, repos that are designed to be used after etcet-dots are all
+By convention, repos that are designed to be used after loop-dots are all
 named `*-dots`.
 
-\[Note: Throughout this document, we refer to the files as being in `~/.../`,
-but actually it's configurable, becoming `$DOTDOTDOT_ROOT`.\]
-
-Use
 ---
 
 The easiest way to understand how to make your own setup is to mimic
-http://github.com/ouicode/rkingy-dots-conf
 
-Note that the system is still in flux, and we already have plans on how to
-make it better. Still, if you copy what is done there, it should continue to
-work as we revise our process.
+http://sharpsaw.org/init
+
+…which is a short script that downloads `...` then my `.../conf` file, then
+runs `... install`. Those three tasks are pretty much the entirety of the work
+needed to use this system well (even if you do each manually, it's not so bad.)
 
 Tools
 -----
@@ -33,7 +30,7 @@ with both scripting and interactive shelling. They are all named
 
 These tools are, from the vantage point of `...`, all "opt-in" - unless you
 source `~/.../lib/___`, they stay out of your way. But, when you're using
-etcet-dots, you're definitely opted-in (that is, both `.bashrc` and `.zshenv`
+loop-dots, you're definitely opted-in (that is, both `.bashrc` and `.zshenv`
 source `~/.../lib/basics`).
 
 Let's look at a few of the functions:
@@ -85,7 +82,7 @@ Here is a cheat-sheet:
           ↓
        .zlogin
 
-Now, etcet-dots makes this system even more "interesting" by checking for the
+Now, loop-dots makes this system even more "interesting" by checking for the
 above files in all -dots repos, plus adding the ~/.zsh dir to facilitate
 organization (and nice, atomic names).
 
@@ -96,7 +93,7 @@ The following dirs correspond to the above files:
     ~/.zsh/login/
 
 So you can create my-dots/.zsh/rc/my-aptly-named-thing and trust that it gets
-sourced as part of etcet-dots/.zshrc. If you need something to happen early or
+sourced as part of loop-dots/.zshrc. If you need something to happen early or
 late relative to the others, you can always prefix with `00-___` or `zzz-___`.
 
 Additionally, there is a .sh/ dir that is similar to .zsh/rc, but is for
@@ -105,12 +102,12 @@ good to try for that).
 
 `...` itself comes with some tracing tools to sourt this out, a bit. Look in
 ~/.../lib/tracefuncs (which is avilable by default if you are using the
-etcet-dots repo) for the `...trace` function.
+loop-dots repo) for the `...trace` function.
 
 Bash Sequence
 -------------
 
-The Etcet `.bashrc` will load:
+The loop-dots `.bashrc` will load:
 
 - Everything in `~/.sh/*`, then
 - Everything in `~/.bash/*`, then
@@ -124,7 +121,7 @@ The current `.profile` is not very refined. (TODO)
 Pair Up
 -------
 
-Once you get on board with `etcet-dots`, you can much more easily work with
+Once you get on board with `loop-dots`, you can much more easily work with
 other programmers' favorite configs. This is the main reason behind this
 system, in fact.
 
